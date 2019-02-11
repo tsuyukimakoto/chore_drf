@@ -27,8 +27,10 @@ ENV_DIR = os.path.join(
 TESTING = sys.argv[1:2] == ['test']
 if TESTING:
     environ.Env.read_env(
-        ENV_DIR,
-        '.env.test',
+        os.path.join(
+            ENV_DIR,
+            '.env.test',
+        ),
     )
 
 environ.Env.read_env(
