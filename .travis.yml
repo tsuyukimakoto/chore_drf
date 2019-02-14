@@ -12,3 +12,5 @@ script:
   - tox
 install:
   - pip install tox
+before_deploy:
+  - cp src/prjct/envs/.env.test src/prjct/envs/.env
