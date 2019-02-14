@@ -1,4 +1,3 @@
 # Chore Django REST framework
 
-.. image:: https://travis-ci.com/tsuyukimakoto/chore_drf.svg?branch=master
-    :target: https://travis-ci.com/tsuyukimakoto/chore_drf
+[![alt属性](https://travis-ci.com/tsuyukimakoto/chore_drf.svg?branch=master)](https://travis-ci.com/tsuyukimakoto/chore_drf)
