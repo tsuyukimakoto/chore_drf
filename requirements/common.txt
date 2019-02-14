@@ -3,3 +3,4 @@
 -r django.txt
 -r drf.txt
 -r environ.txt
+-r tests.txt
