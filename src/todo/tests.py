@@ -1,12 +1,9 @@
 from unittest.mock import patch
 
-from django.test import TestCase
-from django.test.utils import override_settings
 from factory.django import DjangoModelFactory
 from pytest import mark
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.test import APIClient
-from rest_framework.views import APIView
 
 from .models import Todo
 from .views import TodoViewSet
@@ -34,7 +31,7 @@ def test_list():
 #         'rest_framework.permissions.IsAuthenticated',
 #     )
 # })
-@patch.object(TodoViewSet, 'permission_classes', new = [IsAuthenticated])
+@patch.object(TodoViewSet, 'permission_classes', new=[IsAuthenticated])
 @mark.django_db
 def test_list_permission():
     TodoFactory.create()
