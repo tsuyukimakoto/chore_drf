@@ -7,6 +7,9 @@ class TodoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Todo
         fields = (
+            'id',
             'headline',
             'content',
+            'created_at',
         )
+        read_only_fields = ('id', 'created_at')
