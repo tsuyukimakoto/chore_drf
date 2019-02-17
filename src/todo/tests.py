@@ -1,5 +1,6 @@
 from unittest.mock import patch
 
+from django.urls import reverse
 from factory.django import DjangoModelFactory
 from pytest import mark
 from rest_framework.permissions import IsAuthenticated
@@ -20,7 +21,7 @@ def test_list():
     TodoFactory.create()
 
     client = APIClient()
-    response = client.get('/todos', format='json')
+    response = client.get(reverse('todo-list'), format='json')
     assert 2 == len(response.data)
 
 
@@ -38,5 +39,5 @@ def test_list_permission():
     TodoFactory.create()
 
     client = APIClient()
-    response = client.get('/todos', format='json')
+    response = client.get(reverse('todo-list'), format='json')
     assert 403 == response.status_code
