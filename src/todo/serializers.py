@@ -19,6 +19,11 @@ class TodoSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
 
+    def to_internal_value(self, data):
+        values = super().to_internal_value(data)
+        values['todo_id'] = self.context['todo_id']
+        return values
+
     class Meta:
         model = Comment
         fields = (
