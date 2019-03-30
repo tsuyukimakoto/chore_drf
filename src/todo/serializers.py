@@ -38,3 +38,10 @@ class CommentSerializer(serializers.ModelSerializer):
             'created_at',
             'todo_id',
         )
+        validators = [
+            serializers.UniqueTogetherValidator(
+                queryset=Comment.objects.all(),
+                fields=('todo_id', 'title'),
+                message="title can't same on each Todo.",
+            ),
+        ]
