@@ -41,3 +41,49 @@ def test_list_permission():
     client = APIClient()
     response = client.get(reverse('todo-list'), format='json')
     assert 403 == response.status_code
+
+
+@mark.django_db
+def test_add_comment():
+    todo = TodoFactory.create()
+    client = APIClient()
+    response = client.post(
+        reverse('todo_comment-list', kwargs={'todo_id': todo.id}),
+        {
+            'title': 'title1',
+            'body': 'comment body',
+        },
+    )
+    assert 201 == response.status_code
+
+    response = client.post(
+        reverse('todo_comment-list', kwargs={'todo_id': todo.id}),
+        {
+            'title': 'title2',
+            'body': 'comment body2',
+        },
+    )
+    assert 201 == response.status_code
+
+
+@mark.django_db
+def test_add_comment_unique_together():
+    todo = TodoFactory.create()
+    client = APIClient()
+    response = client.post(
+        reverse('todo_comment-list', kwargs={'todo_id': todo.id}),
+        {
+            'title': 'title1',
+            'body': 'comment body',
+        },
+    )
+    assert 201 == response.status_code
+
+    response = client.post(
+        reverse('todo_comment-list', kwargs={'todo_id': todo.id}),
+        {
+            'title': 'title1',
+            'body': 'comment body',
+        },
+    )
+    assert 400 == response.status_code
