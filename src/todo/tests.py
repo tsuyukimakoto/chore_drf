@@ -48,8 +48,8 @@ def test_add_comment():
     todo = TodoFactory.create()
     client = APIClient()
     response = client.post(
-        reverse('todo_comment-list', kwargs={'todo_id': todo.id})
-        , {
+        reverse('todo_comment-list', kwargs={'todo_id': todo.id}),
+        {
             'title': 'title1',
             'body': 'comment body',
         },
@@ -57,8 +57,8 @@ def test_add_comment():
     assert 201 == response.status_code
 
     response = client.post(
-        reverse('todo_comment-list', kwargs={'todo_id': todo.id})
-        , {
+        reverse('todo_comment-list', kwargs={'todo_id': todo.id}),
+        {
             'title': 'title2',
             'body': 'comment body2',
         },
@@ -71,17 +71,17 @@ def test_add_comment_unique_together():
     todo = TodoFactory.create()
     client = APIClient()
     response = client.post(
-        reverse('todo_comment-list', kwargs={'todo_id': todo.id})
-        ,{
-             'title': 'title1',
+        reverse('todo_comment-list', kwargs={'todo_id': todo.id}),
+        {
+            'title': 'title1',
             'body': 'comment body',
         },
     )
     assert 201 == response.status_code
 
     response = client.post(
-        reverse('todo_comment-list', kwargs={'todo_id': todo.id})
-        , {
+        reverse('todo_comment-list', kwargs={'todo_id': todo.id}),
+        {
             'title': 'title1',
             'body': 'comment body',
         },
