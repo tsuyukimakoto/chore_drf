@@ -17,6 +17,7 @@ class TodoSerializer(serializers.ModelSerializer):
         )
         read_only_fields = ('id', 'created_at')
 
+
 class CommentSerializer(serializers.ModelSerializer):
 
     def to_internal_value(self, data):

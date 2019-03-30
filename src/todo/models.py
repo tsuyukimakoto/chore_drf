@@ -6,6 +6,7 @@ class Todo(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+
 class Comment(models.Model):
     todo = models.ForeignKey(Todo, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
