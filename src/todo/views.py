@@ -20,5 +20,10 @@ class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all().order_by('-created_at')
     serializer_class = CommentSerializer
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['todo_id'] = self.kwargs['todo_id']
+        return context
+
     def get_queryset(self):
         return Comment.objects.filter(todo_id=self.kwargs['todo_id'])
