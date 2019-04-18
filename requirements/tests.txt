@@ -2,7 +2,7 @@ factory_boy==2.11.1
 pytest==4.4.0
 pytest-django==3.4.8
 pytest-pythonpath==0.7.3
-tox==3.8.6
+tox==3.9.0
 flake8==3.7.7
 codecov==2.0.15
 pytest-cov==2.6.1
