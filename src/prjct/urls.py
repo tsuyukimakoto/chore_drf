@@ -14,15 +14,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls import include, url
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path, re_path
+
+from rest_framework.schemas import get_schema_view
+from rest_framework.renderers import OpenAPIRenderer
+
 
 urlpatterns = [
-    url(r'^', include('todo.urls')),
+    re_path(r'^', include('todo.urls')),
 ]
 
 if settings.DEBUG:
+    #  https://www.django-rest-framework.org/api-guide/schemas/#the-get_schema_view-shortcut
+    schema_view = get_schema_view(
+        title="Server Monitoring API",
+        urlconf=urlpatterns,
+        url='http://localhost:8000/api/',
+        renderer_classes=[OpenAPIRenderer],
+    )
     urlpatterns += [
+        re_path('openapi/', schema_view),
         path('admin/', admin.site.urls),
     ]

@@ -78,3 +78,23 @@ https://codecov.io
 Codecov provides highly integrated tools to group, merge, archive, and compare coverage reports.
 
 カバレッジレポート。PRにカバレッジレポートを埋め込んでくれる。
+
+API Star
+-----------------------------------
+
+https://docs.apistar.com
+
+API Star is a toolkit for working with OpenAPI or Swagger schemas.
+
+OpenAPIのschemaからAPIドキュメントを生成する。んー？
+
+Django REST Framework 3.9からOpenAPIに正式対応なので…
+
+```
+$ python manage.py generateschema --format openapi > schema.yml
+(todo: open schema.yml with editor and input server.url)
+$ apistar docs --path schema.yml --format openapi
+$ cd build
+$ python -m http.server
+$ open http://localhost:8000
+```
