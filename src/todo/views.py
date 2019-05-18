@@ -23,7 +23,7 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
-        context['todo_id'] = self.kwargs['todo_id']
+        context['todo_id'] = self.kwargs.get('todo_id')
         return context
 
     def get_queryset(self):

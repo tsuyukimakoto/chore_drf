@@ -1,0 +1,66 @@
+info:
+  description: ''
+  title: ''
+  version: ''
+openapi: 3.0.0
+paths:
+  /api/todos:
+    get:
+      operationId: todos_list
+      tags:
+      - todos
+    post:
+      operationId: todos_create
+      tags:
+      - todos
+  /api/todos/{id}:
+    delete:
+      operationId: todos_delete
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          description: A unique integer value identifying this todo.
+          title: ID
+          type: integer
+      tags:
+      - todos
+    get:
+      operationId: todos_read
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          description: A unique integer value identifying this todo.
+          title: ID
+          type: integer
+      tags:
+      - todos
+    patch:
+      operationId: todos_partial_update
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          description: A unique integer value identifying this todo.
+          title: ID
+          type: integer
+      tags:
+      - todos
+    put:
+      operationId: todos_update
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          description: A unique integer value identifying this todo.
+          title: ID
+          type: integer
+      tags:
+      - todos
+servers:
+- url: 'http://localhost:8000'
