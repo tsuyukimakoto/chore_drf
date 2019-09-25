@@ -27,6 +27,7 @@ jobs:
       env:
         DJANGO_SETTINGS_MODULE: prjct.settings
       run: |
+        cp src/prjct/envs/.env.test src/prjct/envs/.env
         pip install pytest pytest-cov
         pytest --cov=./src/ --cov-report=xml
         codecov
